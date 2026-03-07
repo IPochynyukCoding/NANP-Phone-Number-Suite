@@ -19,7 +19,7 @@ if __name__ == "__main__":
         phone_number=input("Enter your phone number or press 'q' to quit: ")
         if phone_number.lower() == "q":
             quit()
-        if phone_number.startswith("+1"):
+        elif phone_number.startswith("+1"):
             is_valid_phone_number=phone_checker(phone_number,phone_formats,True)
         else:
             is_valid_phone_number=phone_checker(phone_number,phone_formats)
