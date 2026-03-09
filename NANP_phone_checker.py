@@ -13,7 +13,7 @@ def standardize_format(phone_number:str):
     for char in phone_number:
         if char.isnumeric():
             standardized_number+=char
-    return standardized_number[1:] if standardized_number.startswith("1") else standardized_number
+    return standardized_number[1:] if standardized_number.startswith("1") and len(standardized_number)==11 else standardized_number
 def area_code_checker(phone_number:str,valid_parameters:list):
     current_area_code=int(phone_number[0:3])
     for area_code in valid_parameters:
