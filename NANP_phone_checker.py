@@ -12,7 +12,7 @@ def standardize_format(phone_number:str, is_international:bool):
     phone_number = phone_number[2:] if is_international else phone_number
     standardized_number=""
     for char in phone_number:
-        if char in "0123456789":
+        if char.isnumeric():
             standardized_number+=char
     return standardized_number
 def area_code_checker(phone_number:str,valid_parameters:list):
