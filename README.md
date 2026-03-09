@@ -6,4 +6,4 @@ An implementation in Python to verify North American Numbering Plan (NANP) phone
 1. Enter your phone number
 2. Wait for the program to display your results
 
-Please see [https://en.wikipedia.org/wiki/North_American_Numbering_Plan] for more details regarding the North American Numbering Plan
+Please see https://en.wikipedia.org/wiki/North_American_Numbering_Plan for more details regarding the North American Numbering Plan
