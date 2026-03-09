@@ -8,13 +8,12 @@ def phone_format_checker(phone_number:str,formats:dict,is_international:bool):
             return True
     return False
 
-def standardize_format(phone_number:str, is_international:bool):
-    phone_number = phone_number[2:] if is_international else phone_number
+def standardize_format(phone_number:str):
     standardized_number=""
     for char in phone_number:
         if char.isnumeric():
             standardized_number+=char
-    return standardized_number
+    return standardized_number[1:] if standardized_number.startswith("1") else standardized_number
 def area_code_checker(phone_number:str,valid_parameters:list):
     current_area_code=int(phone_number[0:3])
     for area_code in valid_parameters:
@@ -35,7 +34,7 @@ if __name__ == "__main__":
         else:
             print(f"The phone number {phone_number} fails the formatting test.")
             continue
-        standardized_phone=standardize_format(phone_number,is_international)
+        standardized_phone=standardize_format(phone_number)
         area_code_type=area_code_checker(standardized_phone,valid_parameters["valid_area_codes"])
         if area_code_type:
             print(f"The phone number {phone_number} is a valid {area_code_type} number{" using the international format." if is_international else "."}")
