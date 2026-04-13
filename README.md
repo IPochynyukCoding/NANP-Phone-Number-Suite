@@ -1,5 +1,6 @@
 # North American Numbering Plan (NANP) Phone Number Suite
-
+## Purpose for this project
+The project is split into two main files: a parser for phone numbers from plaintext files and a validator to ensure correctly formatted phone numbers. The parser will take a directory to a text file, scans the text file for valid phone numbers, and output results into a text file detailing the results. The validator will take a phone number to be validated, which will test if the phone number has a valid format (see Allowed Phone Number Formats) and a valid area code.
 ## Brief History of NANP 
 ### Initial concept
 The NANP (North American Numbering Plan) system was introduced in the 1940s by Bell System to unify numbering plans across North America, reducing long-distance costs, labor for switchboard operators (later replaced with automated exchanges), and call completion times. The first direct call using area codes was from 10 November 1951 from Englewood, New Jersey to Alameda, California, proving the concept to be successful.
@@ -13,15 +14,29 @@ The most recent member of the NANP system was Sint Maarten (A Dutch island in th
 ## Scope
 
 Here are the allowed phone number formats for this project:
-* Dot notation (123.456.7890)
-* Dash notation (123-456-7890)
-* Space notation (123 456 7890)
-* Parenthesis notation ((123) 456-7890)
+
+* Dot notation  
+    * 123.456.7890 
+    * 1.123.456.7890 
+    * +1.123.456.7890 
+* Dash notation  
+    *  123-456-7890 
+    *  1-123-456-7890 
+    *  +1-123-456-7890 
+* Space notation  
+    * 123 456 7890 
+    * 1 123 456 7890 
+    * +1 123 456 7890 
+* Parenthesis notation  
+    * (123) 456-7890 
+    * 1 (123) 456-7890 
+    * +1 (123) 456-7890
 
 ### Things Out of Scope for this Project
 * The parser and validator will not cover vanity phone numbers (i.e., 1-800-GOT-JUNK or 1-800-GOT-FLOWERS).
 * Mixed-case phone numbers like (1-234.456-7890) will also not be covered, since it is an invalid format, despite being a valid phone number.
-
+* Phone numbers with extensions like 1-800-234-4567 ex 459 will not pass the validator, but the parser will take the phone number as 800-234-4567. 
+* The parser will not take other files such as Microsoft Outlook or Microsoft Word files.
 ## Technical Details
 ### valid_parameters.json
 This JSON file contains the regular expressions for the phone number validator (valid_formats) with each format in the scope having a local format and an international format, alongside the phone number parser, but the parser only has regular expressions for local format (for example 1-800-123-4567 will only get 800-123-4567). In addition, it contains the phone number types and valid area codes for the phone number validator with all US states and territories, all Canadian provinces, Anguilla, Bahamas, Barbados, Bermuda, British Virgin Islands, Cayman Islands, Dominica, Dominican Republic, Grenada, Guam, Jamaica, Montserrat, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Sint Maarten, Trinidad and Tobago, and Turks and Caicos Islands.
